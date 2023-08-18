@@ -10,7 +10,8 @@ exports.addCategoty = async (req, res) => {
     }
     catch (error) {
         return res.status(400).json({
-            message: 'Thêm danh mục sản phẩm thất bại'
+            message: 'Thêm danh mục sản phẩm thất bại',
+            error: error.message
         })
     }
 }
