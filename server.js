@@ -4,7 +4,7 @@ const dotenv=require('dotenv')
 
 
 dotenv.config({path:'config/config.env'})
-mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-poly', {
+mongoose.connect('mongodb+srv://dongtimo:20042003@.com@cluster0.muqqkxo.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(()=>{
