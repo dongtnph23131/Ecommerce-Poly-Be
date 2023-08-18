@@ -4,10 +4,12 @@ const dotenv=require('dotenv')
 
 
 dotenv.config({path:'config/config.env'})
-
-app.listen(process.env.PORT,async ()=>{
-   await mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-poly', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-poly', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(()=>{
+    console.log('ok');
+})
+app.listen(process.env.PORT,()=>{
+  console.log('1');
 })
