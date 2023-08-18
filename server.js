@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 
 
-dotenv.config({ path: 'config/config.env' })
+dotenv.config()
 
 app.listen(process.env.PORT, async () => {
   await mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-poly', {
