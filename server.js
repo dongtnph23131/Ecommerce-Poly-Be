@@ -9,6 +9,8 @@ app.listen(process.env.PORT, async () => {
   await mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-poly', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+  }).then(()=>{
+    console.log(1);
   })
-  console.log('1');
+  
 })
