@@ -15,7 +15,7 @@ exports.addCategoty = async (req, res) => {
         })
     }
 }
-exports.getAllCategory = async (res, req) => {
+exports.getAllCategory = async (req,res) => {
     try {
         const data = await Category.find()
         return res.status(200).json({
