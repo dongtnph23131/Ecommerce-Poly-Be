@@ -2,7 +2,7 @@ const Category = require("../models/category")
 
 exports.addCategoty = async (req, res) => {
     try {
-        const data = await Category.create(req.body)
+        const data = await Category.create(req.body, { writeConcern: { wtimeout: 20000 } })
         return res.status(200).json({
             message: 'Thêm danh mục sản phẩm thành công',
             data: data
