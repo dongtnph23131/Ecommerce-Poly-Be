@@ -6,7 +6,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 app.listen(process.env.PORT, async () => {
-  await mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-poly', {
+  await mongoose.connect('mongodb+srv://donghaha:123456abc@ecommerce.ylijltl.mongodb.net/nodejs?retryWrites=true&w=majorit', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }).then(()=>{
