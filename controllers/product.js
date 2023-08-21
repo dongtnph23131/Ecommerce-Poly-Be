@@ -16,7 +16,7 @@ exports.addProduct = async (req, res) => {
 exports.getProducts = async (req, res) => {
     try {
         const queryObj = { ...req.query };
-        const excludedFields = ['page', 'limit', 'sort', 'fields', 'search'];
+        const excludedFields = ['page', 'limit', 'sort', 'fields', 'search','categoryId'];
         excludedFields.forEach(el => delete queryObj[el]);
 
         let queryStr = JSON.stringify(queryObj)
@@ -32,6 +32,11 @@ exports.getProducts = async (req, res) => {
         if (req.query.search) {
             products = products.where(
                 { name: { $regex: req.query.search, $options: 'i' } }
+            )
+        }
+        if(req.query.categoryId){
+            products = products.where(
+                { categoryId: req.query.categoryId}
             )
         }
         const page = Number(req.query.page) || 1;
