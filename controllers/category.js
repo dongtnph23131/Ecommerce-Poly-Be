@@ -28,3 +28,20 @@ exports.getAllCategory = async (req,res) => {
         })
     }
 }
+exports.updateCategory = async (req, res) => {
+    try {
+        const id = req.params.id
+        const updateCategory = await Category.findByIdAndUpdate(id, req.body, {
+            new: true
+        })
+        return res.status(200).json({
+            message: "Cập nhập danh mục sản phẩm thành công",
+            updateCategory
+        })
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: error.message
+        })
+    }
+}
