@@ -47,7 +47,7 @@ exports.getProducts = async (req, res) => {
             )
         }
         const page = Number(req.query.page) || 1;
-        const limit = req.query.limit || 8
+        const limit = req.query.limit || 4
         const skip = limit * (page - 1);
         products = products.skip(skip).limit(limit)
         const data = await products;
