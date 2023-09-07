@@ -121,3 +121,41 @@ exports.getProduct = async (req, res) => {
         })
     }
 }
+exports.getProductsAdmin = async (req, res) => {
+    try {
+        const queryObj = { ...req.query };
+        const excludedFields = ['page', 'limit', 'sort', 'fields', 'search', 'categoryId'];
+        excludedFields.forEach(el => delete queryObj[el]);
+
+        let queryStr = JSON.stringify(queryObj)
+        queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`)
+
+        let products = Product.find(JSON.parse(queryStr))
+        if (req.query.sort) {
+            products = products.sort(req.query.sort)
+        }
+        else {
+            products = products.sort('createdAt')
+        }
+        if (req.query.search) {
+            products = products.where(
+                { name: { $regex: req.query.search, $options: 'i' } }
+            )
+        }
+        if (req.query.categoryId) {
+            console.log(req.query.categoryId);
+            products = products.where(
+                { categoryId: req.query.categoryId }
+            )
+        }
+        const data = await products;
+        return res.status(200).json({
+            data: data
+        })
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: error.message
+        })
+    }
+}
