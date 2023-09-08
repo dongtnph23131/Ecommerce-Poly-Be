@@ -39,3 +39,19 @@ exports.getOrderDetail = async (req, res) => {
         })
     }
 }
+exports.updateOrder=async (req, res) => {
+    try {
+        const order = await Order.findByIdAndUpdate(req.params.id,req.body,{
+            new:true
+        })
+        return res.status(200).json({
+            message:'Cập nhập trạng thái đơn hàng thành công',
+            data: order
+        })
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: error.message
+        })
+    }
+}

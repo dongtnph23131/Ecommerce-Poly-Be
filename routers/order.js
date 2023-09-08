@@ -1,8 +1,10 @@
 const express=require('express')
-const { createOrder, getAllOrder, getOrderDetail } = require('../controllers/order')
+const { createOrder, getAllOrder, getOrderDetail, updateOrder } = require('../controllers/order')
 const {authenticate}=require('../middlewares/authenticate')
+const {authorization}=require('../middlewares/authorization')
 const router=express.Router()
 router.post('/orders',authenticate,createOrder)
 router.get('/orders',getAllOrder)
 router.get('/orders/:id',getOrderDetail)
+router.patch('/orders/:id',authenticate,authorization,updateOrder)
 module.exports=router
