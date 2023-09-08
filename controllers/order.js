@@ -26,3 +26,16 @@ exports.getAllOrder = async (req, res) => {
         })
     }
 }
+exports.getOrderDetail = async (req, res) => {
+    try {
+        const order = await Order.findById(req.params.id)
+        return res.status(200).json({
+            data: order
+        })
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: error.message
+        })
+    }
+}
