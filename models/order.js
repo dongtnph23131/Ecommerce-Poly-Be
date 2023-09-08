@@ -56,11 +56,15 @@ const orderSchema = new mongoose.Schema({
     totalOrder: {
         type: Number,
         required: true
-    }
+    },
+    paidAt: {
+        type: Date,
+        required: true,
+    },
 },
     {
         timestamps: true,
         versionKey: false
     }
 )
-module.exports=mongoose.model('Order',orderSchema)
+module.exports = mongoose.model('Order', orderSchema)
