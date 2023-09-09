@@ -55,3 +55,16 @@ exports.updateOrder=async (req, res) => {
         })
     }
 }
+exports.getMyOrders=async (req, res) => {
+    try {
+        const order=await Order.find({user:req.params.userId})
+        return res.status(200).json({
+            data: order
+        })
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: error.message
+        })
+    }
+}
