@@ -5,7 +5,7 @@ exports.checkoutCart = async (req, res) => {
             line_items: req.body.lineItems,
             mode: 'payment',
             payment_method_types: ['card'],
-            success_url: 'https://ecommerce-psi-liart-76.vercel.app/',
+            success_url: 'https://ecommerce-psi-liart-76.vercel.app',
             cancel_url: 'https://ecommerce-psi-liart-76.vercel.app/checkout'
         })
         return res.status(201).json(session)
