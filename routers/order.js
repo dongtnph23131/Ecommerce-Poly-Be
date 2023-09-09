@@ -6,7 +6,7 @@ const router=express.Router()
 router.post('/orders',authenticate,createOrder)
 router.get('/orders',getAllOrder)
 router.get('/orders/:id',getOrderDetail)
-router.patch('/orders/:id',authenticate,authorization,updateOrder)
+router.patch('/orders/:id',updateOrder)
 router.get('/myOrder/:userId',getMyOrders)
 //
 module.exports=router
