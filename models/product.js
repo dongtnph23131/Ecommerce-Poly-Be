@@ -49,6 +49,10 @@ const productSchema = new mongoose.Schema({
                 type: Number,
                 required: true,
             },
+            avatar: {
+                type: String,
+                required: true,
+            },
             comment: {
                 type: String,
                 required: true,
@@ -57,9 +61,9 @@ const productSchema = new mongoose.Schema({
     ],
 },
     {
-       timestamps:true,
-       versionKey:false
+        timestamps: true,
+        versionKey: false
     }
 )
 
-module.exports=mongoose.model('Product',productSchema)
+module.exports = mongoose.model('Product', productSchema)
